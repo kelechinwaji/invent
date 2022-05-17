@@ -49,4 +49,19 @@ export class productStore{
         throw new Error(`could not create new product ${error}`); 
        }
    }
+
+   // update methods allows a user to edit the details of the existing product
+   async update (id: string, product: product): Promise<product>{
+       try {
+           const conn = await client.connect();
+           const sql = `UPDATE  products SET product_name = ($1), quantity = ($2), mode_of_tracking = ($3), ware_house_name = ($4), date_of = ($3) WHERE id = ${id} RETURNING *`;
+           const values = [product.productName, product.quantity, product.modeOfTracking, product.wareHouseName, product.dateOf];
+           const result = await conn.query(sql, values);
+           return result.rows[0]
+       } catch (error) {
+        throw new Error(`could not edit product ${error}`); 
+       }
+   }
+
+  
 }
