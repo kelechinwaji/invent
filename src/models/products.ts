@@ -2,7 +2,7 @@ import { type } from "os";
 import client from "../database";
 
 // Type declaration for the table schema
-export type product = {
+export type Product = {
     id? : string,
     productName: string,
     quantity: string,
