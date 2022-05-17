@@ -1,4 +1,4 @@
-import { Application, Request, Response } from "express";
+import {  Request, Response } from "express";
 import { productStore, Product } from "../models/products";
 import express  from "express"
 
@@ -33,10 +33,14 @@ const create  = async (req: Request, res: Response) =>{
        wareHouseName: req.body.wareHouseName,
        dateOf: req.body.dateOf
     }
+    console.log(product);
+    
     try {
         const addProducts = await store.create(product);
         res.json(addProducts);
     } catch (error) {
+        console.log(error);
+        
         res.status(400);
         res.json(error);
     }
@@ -72,4 +76,9 @@ const destroy = async (req: Request, res: Response) =>{
     } 
 
 
-    
+    const productRoutes = (app: express.Application) =>{
+        app.get('/products', index);
+        app.post('/api/products/', create);
+    }
+
+    export default productRoutes;
