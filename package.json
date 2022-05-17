@@ -40,7 +40,7 @@
     "express": "^4.17.3",
     "jasmine": "^4.0.2",
     "jasmine-spec-reporter": "^7.0.0",
-    "mongoose": "^6.1.8",
+    "mongoose": "^6.3.3",
     "mongose": "^0.0.2-security",
     "pg": "^8.7.3",
     "superset": "^2.0.1",
