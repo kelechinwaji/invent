@@ -14,7 +14,7 @@ export type Product = {
 // This class holds all the query methods
 export class productStore{
     // index method queries the products table and returns all the available items.
-   async index(): Promise<product[]>{
+   async index(): Promise<Product[]>{
        try {
            const conn = await client.connect();
            const sql = `SELECT * FROM products`;
@@ -27,7 +27,7 @@ export class productStore{
    }
 
 // show method queries the products table and returns the item on the id column.
-   async show(id:string): Promise<product>{
+   async show(id:string): Promise<Product>{
        try {
         const conn = await client.connect();
         const sql = `SELECT * FROM products WHERE id = ${id}`;
@@ -40,7 +40,7 @@ export class productStore{
    }
 
    // create method adds a new column with data
-   async create(product: product): Promise<product>{
+   async create(product: Product): Promise<Product>{
        try {
         const conn = await client.connect();
         const sql = `INSERT INTO products (product_name,  quantity, mode_of_tracking, ware_house_name, date_of) VALUES ($1, $2, $3, $4, $5) RETURNING *`; 
@@ -54,7 +54,7 @@ export class productStore{
    }
 
    // update methods allows a user to edit the details of the existing product
-   async update (id: string, product: product): Promise<product>{
+   async update (id: string, product: Product): Promise<Product>{
        try {
            const conn = await client.connect();
            const sql = `UPDATE  products SET product_name = ($1), quantity = ($2), mode_of_tracking = ($3), ware_house_name = ($4), date_of = ($3) WHERE id = ${id} RETURNING *`;
@@ -68,7 +68,7 @@ export class productStore{
    }
 
    // delete method delete all items from a specified column
-   async destroy(id:string): Promise<product>{
+   async destroy(id:string): Promise<Product>{
       try {
           const conn = await client.connect();
           const sql = ` DELETE FROM products WHERE id = ${id}`;

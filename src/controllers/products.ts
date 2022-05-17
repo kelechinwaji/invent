@@ -41,3 +41,21 @@ const create  = async (req: Request, res: Response) =>{
         res.json(error);
     }
 }
+
+const update = async (req: Request, res: Response) =>{
+    const product:Product = {
+        productName: req.body.productName,
+        quantity: req.body.quantity,
+        modeOfTracking: req.body.modeOfTracking,
+        wareHouseName: req.body.wareHouseName,
+        dateOf: req.body.dateOf
+    }
+
+    try {
+        const upProducts = await store.update(req.params.id, product)
+        res.json(upProducts);
+    } catch (error) {
+        res.status(400);
+        res.json(error);
+    }
+}
