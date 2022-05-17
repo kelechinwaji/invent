@@ -1,0 +1,29 @@
+import { type } from "os";
+import client from "../database";
+
+// Type declaration for the table schema
+export type product = {
+    id? : string,
+    productName: string,
+    quantity: string,
+    modeOfTracking: string,
+    wareHouseName: string,
+    dateOf: string
+}
+
+// This class holds all the query methods
+export class productStore{
+    // index method queries the products table and returns all the available items.
+   async index(): Promise<product[]>{
+       try {
+           const conn = await client.connect();
+           const sql = `SELECT * FROM products`;
+           const result = await conn.query(sql);
+           return result.rows
+       } catch (error) {
+        throw new Error(`could not get orders ${error}`);
+       }
+   }
+
+  
+}
