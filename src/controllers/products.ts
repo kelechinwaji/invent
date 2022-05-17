@@ -15,3 +15,12 @@ const index = async (req: Request, res: Response) =>{
     }
 }
 
+const show = async (req: Request, res: Response) =>{
+    try {
+        const showProducts = await store.show(req.params.id);
+        res.json(showProducts)
+    } catch (error) {
+        res.status(400);
+        res.json(error);
+    }
+}
