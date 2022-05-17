@@ -59,3 +59,17 @@ const update = async (req: Request, res: Response) =>{
         res.json(error);
     }
 }
+
+const destroy = async (req: Request, res: Response) =>{
+    try {
+        const fall = await store.destroy(req.params.id);
+        res.json(fall)
+    }  
+    catch (error) {
+        res.status(400);
+        res.json(error);
+    }
+    } 
+
+
+    
