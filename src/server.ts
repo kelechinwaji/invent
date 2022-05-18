@@ -1,11 +1,18 @@
 import { application, Request, Response } from "express";
+import cors from "cors";
 import express  from 'express';
 import productRoutes from "./controllers/products"
+
+
 
 const app = express();
 const port: number = 4000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use(cors({
+  origin: '*'
+}));
 
 productRoutes(app);
 

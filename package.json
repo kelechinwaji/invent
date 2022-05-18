@@ -33,7 +33,9 @@
     "ts-node": "^10.7.0"
   },
   "dependencies": {
+    "@types/cors": "^2.8.12",
     "axios": "^0.26.1",
+    "cors": "^2.8.5",
     "db-migrate": "^0.11.13",
     "db-migrate-pg": "^1.2.2",
     "dotenv": "^16.0.0",
